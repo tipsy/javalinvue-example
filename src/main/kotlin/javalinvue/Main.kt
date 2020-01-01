@@ -17,11 +17,11 @@ fun main() {
         config.accessManager { handler, ctx, permittedRoles ->
             when {
                 AppRole.ANYONE in permittedRoles -> handler.handle(ctx)
-                AppRole.LOGGED_IN in permittedRoles && anyUsernameProvided(ctx) -> handler.handle(ctx)
+                AppRole.LOGGED_IN in permittedRoles && currentUser(ctx) != null -> handler.handle(ctx)
                 else -> ctx.status(401).header(Header.WWW_AUTHENTICATE, "Basic")
             }
         }
-        JavalinVue.stateFunction = { ctx -> mapOf("currentUser" to ctx.basicAuthCredentials()?.username) }
+        JavalinVue.stateFunction = { ctx -> mapOf("currentUser" to currentUser(ctx)) }
     }.start(7000)
 
     app.get("/", VueComponent("<hello-world></hello-world>"), roles(AppRole.ANYONE))
@@ -34,5 +34,5 @@ fun main() {
 
 }
 
-fun anyUsernameProvided(ctx: Context) = ctx.basicAuthCredentials()?.username?.isNotBlank() == true
-
+private fun currentUser(ctx: Context) =
+    if (ctx.basicAuthCredentialsExist()) ctx.basicAuthCredentials().username else null
