@@ -2,6 +2,8 @@
 
 #### Contains source code for https://javalin.io/tutorials/simple-frontends-with-javalin-and-vue
 
+#### Contains Source code for Vue 2 and Vue 3 support
+
 ## Project folder structure
 
 ```
