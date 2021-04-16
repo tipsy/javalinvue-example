@@ -5,7 +5,7 @@
 ## Project folder structure
 
 ```
-javalinvue-example
+javalinvue-example(2/3)
 ├───src
 │   └─── main
 │       └───kotlin
