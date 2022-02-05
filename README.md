@@ -10,17 +10,20 @@
 javalinvue-example(2/3)
 ├───src
 │   └─── main
-│       └───kotlin
-│           ├───javalinvue
-│           │   ├───UserController.kt
-│           │   └───Main.kt
-│           └───resources
+│       ├───kotlin
+│       |   └───javalinvue
+│       |       ├───Main.kt
+│       |       └───UserController.kt
+│       └───resources
+|           └───vue 
 │               ├───components
 │               │   └───app-frame.vue
-│               ├───components
+│               ├───views
+│               │   ├───hello-world.vue
 │               │   ├───not-found.vue
 │               │   ├───user-overview.vue
 │               │   └───user-profile.vue
 │               └───layout.html
+├───.gitignore
 └───pom.xml
 ```
